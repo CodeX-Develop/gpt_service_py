@@ -1,11 +1,16 @@
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from .routers import recommendations
 from .routers import chat
 from fastapi.responses import HTMLResponse
+from starlette.templating import Jinja2Templates
 
 
 app = FastAPI()
+templates = Jinja2Templates("app/templates")
+
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
 app.add_middleware(
     CORSMiddleware,
@@ -23,5 +28,4 @@ app.include_router(recommendations.router, prefix="/api")
 @app.get("/", response_class=HTMLResponse)
 async def root(request: Request):
     nombre = "Usuario"
-    with open("./templates/index.html", "r") as f:
-        return f.read()
+    return templates.TemplateResponse("index.html", {"request": request, "nombre": nombre})
