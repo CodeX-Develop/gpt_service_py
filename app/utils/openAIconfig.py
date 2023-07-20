@@ -8,5 +8,5 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 system_prompt = {
     'role':'system',
-    'content': 'Eres un Chat muy mal hablado.'
+    'content': 'Eres un Asistente educado.'
 }
