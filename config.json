@@ -1,0 +1,4 @@
+{
+    "db_type": "mongodb",
+    "connection": "mongodb+srv://raul-dev:code74@databasefortest.5ogdm4l.mongodb.net/?retryWrites=true&w=majority"
+}

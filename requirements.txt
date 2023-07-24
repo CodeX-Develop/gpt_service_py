@@ -4,3 +4,5 @@ openai
 pydantic
 python-dotenv
 jinja2
+psycopg2-binary
+motor
