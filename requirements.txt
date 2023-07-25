@@ -6,3 +6,4 @@ python-dotenv
 jinja2
 psycopg2-binary
 motor
+googlesearch-python

@@ -82,6 +82,7 @@ class Chat(BaseModel):
             }, "messages")
     
     async def ChatResponse(self, **kwargs):
+        log.info('FUNCIONES: %s', self.functions)
         await self.load_messages()
         if self.functions:
             response = openai.ChatCompletion.create(

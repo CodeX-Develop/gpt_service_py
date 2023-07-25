@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from .routers import recommendations, chat, completion
+from .routers import chat, completion
 from fastapi.responses import HTMLResponse
 from starlette.templating import Jinja2Templates
 from .db.factory import DBType, get_database_factory
@@ -18,7 +18,6 @@ class APIBuilder:
         self.app.mount("/static", StaticFiles(directory="app/static"), name="static")
         return self
 
-<<<<<<< HEAD
     def add_cors(self):
         self.app.add_middleware(
             CORSMiddleware,
@@ -28,19 +27,9 @@ class APIBuilder:
             allow_headers=["*"],
         )
         return self
-=======
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://127.0.0.1:8000"],  # Permite las solicitudes desde este origen
-    allow_credentials=True,
-    allow_methods=["*"],  # Permite todos los métodos HTTP
-    allow_headers=["*"],  # Permite todos los headers
-)
->>>>>>> dacd6e04d147711b091b031248415769bbbf387a
 
     def add_routers(self):
         self.app.include_router(chat.router, prefix="/api")
-        self.app.include_router(recommendations.router, prefix="/api")
         self.app.include_router(completion.router, prefix="/api")
         return self
 

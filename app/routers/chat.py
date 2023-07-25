@@ -2,6 +2,7 @@ from fastapi import APIRouter, Request, Depends
 from fastapi.responses import StreamingResponse
 from app.models.chat import Chat
 from app.db.factory import DatabaseFactory
+from app.utils.openAiFunction import ChatFunction
 
 import logging
 logging.basicConfig(level=logging.INFO)
